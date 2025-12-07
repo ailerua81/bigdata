@@ -1,0 +1,24 @@
+== Physical Plan ==
+AdaptiveSparkPlan (4)
++- Sort (3)
+   +- Exchange (2)
+      +- Scan ExistingRDD (1)
+
+
+(1) Scan ExistingRDD
+Output [2]: [node#0, score#1]
+Arguments: [node#0, score#1], MapPartitionsRDD[218] at applySchemaToPythonRDD at NativeMethodAccessorImpl.java:0, ExistingRDD, UnknownPartitioning(0)
+
+(2) Exchange
+Input [2]: [node#0, score#1]
+Arguments: rangepartitioning(score#1 DESC NULLS LAST, 2), ENSURE_REQUIREMENTS, [plan_id=8]
+
+(3) Sort
+Input [2]: [node#0, score#1]
+Arguments: [score#1 DESC NULLS LAST], true, 0
+
+(4) AdaptiveSparkPlan
+Output [2]: [node#0, score#1]
+Arguments: isFinalPlan=false
+
+
